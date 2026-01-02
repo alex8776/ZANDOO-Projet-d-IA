@@ -33,7 +33,9 @@ CREATE TABLE `client` (
   `dateNaissance` date DEFAULT NULL,
   `sexe` varchar(10) DEFAULT NULL,
   `ville` varchar(100) DEFAULT NULL,
-  `photoProfil` varchar(255) DEFAULT NULL
+  `photoProfil` varchar(255) DEFAULT NULL,
+  `Email` varchar(150) DEFAULT NULL,
+  `Motdepasse` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
