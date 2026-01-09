@@ -7,7 +7,7 @@ from typing import Optional
 
 app = FastAPI(title="API Produits - projet_ia")
 
-# 🔹 Middleware CORS
+#  Middleware CORS(au cas ou le front et le back n'utilisent pas le meme port)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # en production : préciser le domaine du front
@@ -16,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 🔹 Fonction de connexion MySQL
+#  Fonction de connexion MySQL
 def get_db_connection():
     return mysql.connector.connect(
         host="localhost",
@@ -25,7 +25,7 @@ def get_db_connection():
         database="projet_ia"
     )
 
-# 🔹 Modèle de données
+#  Modèle de données
 class Produit(BaseModel):
     libelle: str
     qualite: Optional[str] = None
@@ -35,7 +35,7 @@ class Produit(BaseModel):
     imageProduit: Optional[str] = None
     idVendeur: int
 
-# 🔹 Ajouter un produit
+#  Ajouter un produit
 @app.post("/produits", status_code=201)
 def ajouter_produit(produit: Produit):
     if produit.prix <= 0:
@@ -72,7 +72,7 @@ def ajouter_produit(produit: Produit):
 
     return {"message": "Produit ajouté avec succès", "produit": produit}
 
-# 🔹 Lister tous les produits
+#  Lister tous les produits
 @app.get("/produits")
 def lister_produits():
     db = get_db_connection()
@@ -83,7 +83,7 @@ def lister_produits():
     db.close()
     return {"produits": produits}
 
-# 🔹 Lister les produits par vendeur
+#  Lister les produits par vendeur
 @app.get("/produits/vendeur/{idVendeur}")
 def produits_par_vendeur(idVendeur: int):
     db = get_db_connection()
@@ -94,7 +94,7 @@ def produits_par_vendeur(idVendeur: int):
     db.close()
     return {"produits": produits}
 
-# 🔹 Supprimer un produit
+#  Supprimer un produit
 @app.delete("/produits/{idProduit}")
 def supprimer_produit(idProduit: int):
     db = get_db_connection()
@@ -110,7 +110,7 @@ def supprimer_produit(idProduit: int):
         db.close()
     return {"message": f"Produit {idProduit} supprimé avec succès"}
 
-# 🔹 Modifier un produit
+#  Modifier un produit
 @app.put("/produits/{idProduit}")
 def modifier_produit(idProduit: int, produit: Produit):
     db = get_db_connection()

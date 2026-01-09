@@ -1,6 +1,6 @@
 let produitEnCours = null;
 
-// 🔹 Ajouter un produit
+//  Ajouter un produit
 document.getElementById("produitForm").addEventListener("submit", async function(event) {
     event.preventDefault();
 
@@ -38,7 +38,7 @@ document.getElementById("produitForm").addEventListener("submit", async function
     }
 });
 
-// 🔹 Charger les produits par vendeur
+//  Charger les produits par vendeur
 async function chargerProduits(idVendeur) {
     try {
         const response = await fetch(`http://127.0.0.1:8000/produits/vendeur/${idVendeur}`);
@@ -69,7 +69,7 @@ async function chargerProduits(idVendeur) {
     }
 }
 
-// 🔹 Supprimer un produit
+//  Supprimer un produit
 async function supprimerProduit(idProduit, idVendeur) {
     if (confirm("Voulez-vous vraiment supprimer ce produit ?")) {
         await fetch(`http://127.0.0.1:8000/produits/${idProduit}`, { method: "DELETE" });
@@ -77,7 +77,7 @@ async function supprimerProduit(idProduit, idVendeur) {
     }
 }
 
-// 🔹 Ouvrir le formulaire de modification avec les valeurs actuelles
+//  Ouvrir le formulaire de modification avec les valeurs actuelles
 function ouvrirFormulaireModification(idProduit, idVendeur, libelle, qualite, prix, categorie, stock, imageProduit) {
     produitEnCours = { idProduit, idVendeur };
     document.getElementById("editLibelle").value = libelle;
@@ -89,7 +89,7 @@ function ouvrirFormulaireModification(idProduit, idVendeur, libelle, qualite, pr
     document.getElementById("editForm").style.display = "block";
 }
 
-// 🔹 Valider la modification
+//  Valider la modification
 async function validerModification() {
     const produit = {
         libelle: document.getElementById("editLibelle").value,
