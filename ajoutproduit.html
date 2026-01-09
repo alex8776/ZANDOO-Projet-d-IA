@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Produits</title>
+    <style>
+        body { font-family: Arial; margin: 30px; background: #f9f9f9; }
+        form, table, #editForm { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        input, button { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { background: #4CAF50; color: white; font-weight: bold; cursor: pointer; }
+        button:hover { background: #45a049; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background: #f2f2f2; }
+        img { max-width: 50px; }
+    </style>
+</head>
+<body>
+    <h2>Ajouter un produit</h2>
+    <form id="produitForm">
+        <input type="text" id="libelle" placeholder="Libellé" required>
+        <input type="text" id="qualite" placeholder="Qualité">
+        <input type="number" id="prix" placeholder="Prix" required min="1">
+        <input type="text" id="categorie" placeholder="Catégorie">
+        <input type="number" id="stock" placeholder="Stock" min="0">
+        <input type="text" id="imageProduit" placeholder="URL de l'image">
+        <input type="number" id="idVendeur" placeholder="ID Vendeur" required>
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <p id="message"></p>
+
+    <h2>Liste des produits</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Libellé</th>
+                <th>Qualité</th>
+                <th>Prix</th>
+                <th>Catégorie</th>
+                <th>Stock</th>
+                <th>Image</th>
+                <th>Vendeur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="produitsTable"></tbody>
+    </table>
+
+    <!-- Formulaire de modification -->
+    <div id="editForm" style="display:none;">
+        <h3>Modifier produit</h3>
+        <input type="text" id="editLibelle" placeholder="Libellé">
+        <input type="text" id="editQualite" placeholder="Qualité">
+        <input type="number" id="editPrix" placeholder="Prix">
+        <input type="text" id="editCategorie" placeholder="Catégorie">
+        <input type="number" id="editStock" placeholder="Stock">
+        <input type="text" id="editImageProduit" placeholder="URL de l'image">
+        <button onclick="validerModification()">Valider</button>
+    </div>
+
+    <script src="ajoutproduit.js"></script>
+</body>
+</html>
